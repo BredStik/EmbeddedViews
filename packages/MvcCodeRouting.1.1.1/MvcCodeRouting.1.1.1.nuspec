@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>MvcCodeRouting</id>
+    <version>1.1.1</version>
+    <title>MvcCodeRouting</title>
+    <authors>Max Toro Q.</authors>
+    <owners>Max Toro Q.</owners>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+    <projectUrl>http://mvccoderouting.codeplex.com/</projectUrl>
+    <iconUrl>http://maxtoroq.users.sourceforge.net/mvccoderouting/nuget/icon_nuget.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>MvcCodeRouting for ASP.NET MVC analyzes your controllers and actions and automatically creates the best possible routes for them.
+         Organize your controllers and views using namespaces (no more areas) that can go as deep as you want.
+         Includes support for hierarchical (a.k.a. RESTful) and also user-defined custom routes (using an attribute).
+         It also supports embedded views (as assembly resources) that can be individually overridden by file views.
+         MvcCodeRouting is a single unified solution that provides namespace-aware automatic route creation, URL generation and views location.</description>
+    <summary>MvcCodeRouting for ASP.NET MVC analyzes your controllers and actions and automatically creates the best possible routes for them.
+         Organize your controllers and views using namespaces (no more areas) that can go as deep as you want.</summary>
+    <releaseNotes>- Fixed #1155: FromRoute.BinderType ignored by BindRouteProperties</releaseNotes>
+    <copyright>© 2011-2013 Max Toro Q.</copyright>
+    <language />
+    <tags>aspnet mvc aspnetmvc routing</tags>
+  </metadata>
+</package>

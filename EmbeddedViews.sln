@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2012 for Web
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmbeddedViews", "EmbeddedViews\EmbeddedViews.csproj", "{9EC0784D-4DC1-4FF7-A449-85DE4FF52D1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPlugIn", "MyPlugIn\MyPlugIn.csproj", "{F73A0F8D-8460-4E38-A599-1DE387BDF57D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9EC0784D-4DC1-4FF7-A449-85DE4FF52D1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EC0784D-4DC1-4FF7-A449-85DE4FF52D1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EC0784D-4DC1-4FF7-A449-85DE4FF52D1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EC0784D-4DC1-4FF7-A449-85DE4FF52D1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F73A0F8D-8460-4E38-A599-1DE387BDF57D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F73A0F8D-8460-4E38-A599-1DE387BDF57D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F73A0F8D-8460-4E38-A599-1DE387BDF57D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F73A0F8D-8460-4E38-A599-1DE387BDF57D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
