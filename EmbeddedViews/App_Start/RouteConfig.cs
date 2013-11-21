@@ -14,12 +14,6 @@ namespace EmbeddedViews
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            //routes.MapRoute(
-            //    name: "Default",
-            //    url: "{controller}/{action}/{id}",
-            //    defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            //);
-
             routes.MapCodeRoutes(
                 baseRoute: "hello",
               rootController: typeof(MyPlugIn.Controllers.HelloController),
@@ -29,6 +23,14 @@ namespace EmbeddedViews
                   UseImplicitIdToken = true
               }
            );
+
+            routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            );
+
+            
         }
     }
 }
