@@ -6,10 +6,10 @@ using System.Web.Mvc;
 
 namespace MyPlugIn.Controllers
 {
-    public class HelloController : Controller
+    public class OtherController : Controller
     {
         //
-        // GET: /Hello/
+        // GET: /Other/
 
         public ActionResult Index()
         {

@@ -1,0 +1,10 @@
+﻿@using MyPlugIn.Extensions;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = string.Format("~/Views/{0}/Shared/_Layout.cshtml", MyPlugIn.Properties.Settings.Default.baseRoute);
+}
+
+<h2>Hello world</h2>
+<link href="@Url.Content("~/Resources/Css/Site.css", true)" rel="stylesheet" />
+<img src="@Url.Content("~/Resources/Images/test.gif", true)" />

@@ -15,8 +15,8 @@ namespace EmbeddedViews
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapCodeRoutes(
-                baseRoute: "hello",
-              rootController: typeof(MyPlugIn.Controllers.HelloController),
+                baseRoute: MyPlugIn.Properties.Settings.Default.baseRoute,
+              rootController: typeof(MyPlugIn.Controllers.HelloWorldController),
               settings: new CodeRoutingSettings
               {
                   EnableEmbeddedViews = true,
@@ -27,7 +27,7 @@ namespace EmbeddedViews
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Test", action = "Index", id = UrlParameter.Optional }
             );
 
             
