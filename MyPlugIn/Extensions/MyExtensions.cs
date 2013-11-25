@@ -13,5 +13,13 @@ namespace MyPlugIn.Extensions
             var routeInsertIndex = contentPath.IndexOf('/');
             return helper.Content(contentPath.Insert(routeInsertIndex, string.Format("/{0}", Properties.Settings.Default.baseRoute))); 
         }
+
+        public static void AddViewLocationFormat(this RazorViewEngine engine, string path)
+        {
+            List<string> existingPaths = new List<string>(engine.ViewLocationFormats);
+            existingPaths.Add(path);
+
+            engine.ViewLocationFormats = existingPaths.ToArray();
+        }
     }
 }

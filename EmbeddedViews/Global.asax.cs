@@ -7,6 +7,8 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using MvcCodeRouting;
+using MyPlugIn.Extensions;
+using Microsoft.Web.Mvc;
 
 namespace EmbeddedViews
 {
@@ -23,6 +25,9 @@ namespace EmbeddedViews
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            var razorEngine = ViewEngines.Engines.First(x => x.GetType().Equals(typeof(FixedRazorViewEngine))) as FixedRazorViewEngine;
+            razorEngine.AddViewLocationFormat(string.Format("~/Views/{0}/{{1}}/{{0}}.cshtml", MyPlugIn.Properties.Settings.Default.baseRoute));
             ViewEngines.Engines.EnableCodeRouting();
         }
     }

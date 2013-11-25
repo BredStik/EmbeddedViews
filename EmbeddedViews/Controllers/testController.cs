@@ -13,7 +13,12 @@ namespace EmbeddedViews.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return View();//"~/Views/framework/test/index.cshtml"
+        }
+
+        public ActionResult Edit()
+        {
+            return View("index");
         }
 
     }
