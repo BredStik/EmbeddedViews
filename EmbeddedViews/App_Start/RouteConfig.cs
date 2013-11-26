@@ -14,15 +14,15 @@ namespace EmbeddedViews
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapCodeRoutes(
-                baseRoute: MyPlugIn.Properties.Settings.Default.baseRoute,
-              rootController: typeof(MyPlugIn.Controllers.HelloWorldController),
-              settings: new CodeRoutingSettings
-              {
-                  EnableEmbeddedViews = true,
-                  UseImplicitIdToken = true
-              }
-           );
+           // routes.MapCodeRoutes(
+           //     baseRoute: MyPlugIn.Properties.Settings.Default.baseRoute,
+           //   rootController: typeof(MyPlugIn.Controllers.HelloWorldController),
+           //   settings: new CodeRoutingSettings
+           //   {
+           //       EnableEmbeddedViews = true,
+           //       UseImplicitIdToken = true
+           //   }
+           //);
 
             routes.MapRoute(
                 name: "Default",

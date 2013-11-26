@@ -21,5 +21,13 @@ namespace MyPlugIn.Extensions
 
             engine.ViewLocationFormats = existingPaths.ToArray();
         }
+
+        public static void AddPartialViewLocationFormat(this RazorViewEngine engine, string path)
+        {
+            List<string> existingPaths = new List<string>(engine.PartialViewLocationFormats);
+            existingPaths.Add(path);
+
+            engine.PartialViewLocationFormats = existingPaths.ToArray();
+        }
     }
 }

@@ -26,9 +26,9 @@ namespace EmbeddedViews
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            var razorEngine = ViewEngines.Engines.First(x => x.GetType().Equals(typeof(FixedRazorViewEngine))) as FixedRazorViewEngine;
-            razorEngine.AddViewLocationFormat(string.Format("~/Views/{0}/{{1}}/{{0}}.cshtml", MyPlugIn.Properties.Settings.Default.baseRoute));
-            ViewEngines.Engines.EnableCodeRouting();
+            //var razorEngine = ViewEngines.Engines.First(x => x.GetType().Equals(typeof(FixedRazorViewEngine))) as FixedRazorViewEngine;
+            //razorEngine.AddViewLocationFormat(string.Format("~/Views/{0}/{{1}}/{{0}}.cshtml", MyPlugIn.Properties.Settings.Default.baseRoute));
+            //ViewEngines.Engines.EnableCodeRouting();
         }
     }
 }

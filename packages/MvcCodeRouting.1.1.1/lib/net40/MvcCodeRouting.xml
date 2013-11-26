@@ -1,0 +1,400 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MvcCodeRouting</name>
+    </assembly>
+    <members>
+        <member name="T:MvcCodeRouting.CodeRoutingExtensions">
+            <summary>
+            Extension methods for reflection-based route creation and related functionality.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.CodeRoutingExtensions.MapCodeRoutes(System.Web.Routing.RouteCollection,System.Type)">
+            <summary>
+            Creates routes for the specified root controller and all other controllers
+            in the same namespace or any sub-namespace, in the same assembly.
+            </summary>
+            <param name="routes">A collection of routes for the application.</param>
+            <param name="rootController">The route controller for the application.</param>
+            <returns>The created routes.</returns>
+        </member>
+        <member name="M:MvcCodeRouting.CodeRoutingExtensions.MapCodeRoutes(System.Web.Routing.RouteCollection,System.Type,MvcCodeRouting.CodeRoutingSettings)">
+            <summary>
+            Creates routes for the specified root controller and all other controllers
+            in the same namespace or any sub-namespace, in the same assembly.
+            </summary>
+            <param name="routes">A collection of routes for the application.</param>
+            <param name="rootController">The route controller for the application.</param>
+            <param name="settings">A settings object that customizes the route creation process. This parameter can be null.</param>
+            <returns>The created routes.</returns>
+        </member>
+        <member name="M:MvcCodeRouting.CodeRoutingExtensions.MapCodeRoutes(System.Web.Routing.RouteCollection,System.String,System.Type)">
+            <summary>
+            Creates routes for the specified root controller and all other controllers
+            in the same namespace or any sub-namespace, in the same assembly, and prepends the
+            provided base route to the URL of each created route.
+            </summary>
+            <param name="routes">A collection of routes for the application.</param>
+            <param name="baseRoute">A base route to prepend to the URL of each created route. This parameter can be null.</param>
+            <param name="rootController">The route controller for the provided base route.</param>
+            <returns>The created routes.</returns>
+        </member>
+        <member name="M:MvcCodeRouting.CodeRoutingExtensions.MapCodeRoutes(System.Web.Routing.RouteCollection,System.String,System.Type,MvcCodeRouting.CodeRoutingSettings)">
+            <summary>
+            Creates routes for the specified root controller and all other controllers
+            in the same namespace or any sub-namespace, in the same assembly, and prepends the
+            provided base route to the URL of each created route.
+            </summary>
+            <param name="routes">A collection of routes for the application.</param>
+            <param name="baseRoute">A base route to prepend to the URL of each created route. This parameter can be null.</param>
+            <param name="rootController">The route controller for the provided base route.</param>
+            <param name="settings">A settings object that customizes the route creation process. This parameter can be null.</param>
+            <returns>The created routes.</returns>
+        </member>
+        <member name="M:MvcCodeRouting.CodeRoutingExtensions.EnableCodeRouting(System.Web.Mvc.ViewEngineCollection)">
+            <summary>
+            Enables namespace-aware views location. Always call after you are done adding view engines.
+            </summary>
+            <param name="engines">The view engine collection.</param>
+        </member>
+        <member name="M:MvcCodeRouting.CodeRoutingExtensions.BindRouteProperties(System.Web.Mvc.ControllerBase)">
+            <summary>
+            Binds controller properties decorated with <see cref="T:MvcCodeRouting.FromRouteAttribute"/>
+            using the current route values.
+            </summary>
+            <param name="controller">The controller to bind.</param>
+            <remarks>You can call this method from <see cref="M:System.Web.Mvc.ControllerBase.Initialize(System.Web.Routing.RequestContext)"/>.</remarks>
+        </member>
+        <member name="T:MvcCodeRouting.CodeRoutingSettings">
+            <summary>
+            Holds settings that customize the route creation process.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.CodeRoutingSettings.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvcCodeRouting.CodeRoutingSettings"/> class,
+            using the values from the <see cref="P:MvcCodeRouting.CodeRoutingSettings.Defaults"/> property.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.CodeRoutingSettings.#ctor(MvcCodeRouting.CodeRoutingSettings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvcCodeRouting.CodeRoutingSettings"/> class,
+            using the values from the provided settings instance.
+            </summary>
+            <param name="settings">Another <see cref="T:MvcCodeRouting.CodeRoutingSettings"/> instance to copy the settings from.</param>
+        </member>
+        <member name="M:MvcCodeRouting.CodeRoutingSettings.Reset">
+            <summary>
+            Resets the members of the settings class to their original default values, that is,
+            the values from the <see cref="P:MvcCodeRouting.CodeRoutingSettings.Defaults"/> property before any
+            changes were made.
+            </summary>
+        </member>
+        <member name="P:MvcCodeRouting.CodeRoutingSettings.Defaults">
+            <summary>
+            The settings that all new <see cref="T:MvcCodeRouting.CodeRoutingSettings"/> instances inherit.
+            Use this property to affect the behavior of the <see cref="M:MvcCodeRouting.CodeRoutingExtensions.MapCodeRoutes(System.Web.Routing.RouteCollection,System.Type)"/> 
+            methods without having to pass a settings instance for each call.
+            </summary>
+        </member>
+        <member name="P:MvcCodeRouting.CodeRoutingSettings.DefaultConstraints">
+            <summary>
+            Gets default constraints used for route parameters that represents action parameters
+            and controller properties.
+            </summary>
+            <remarks>
+            This dictionary includes default values for <see cref="T:System.Boolean"/>, <see cref="T:System.Guid"/>,
+            <see cref="T:System.Decimal"/>, <see cref="T:System.Double"/>, <see cref="T:System.Single"/>, <see cref="T:System.SByte"/>,
+            <see cref="T:System.Int16"/>, <see cref="T:System.Int32"/>, <see cref="T:System.Int64"/>, <see cref="T:System.Byte"/>,
+            <see cref="T:System.UInt16"/>, <see cref="T:System.UInt32"/> and <see cref="T:System.UInt64"/>.
+            </remarks>
+        </member>
+        <member name="P:MvcCodeRouting.CodeRoutingSettings.IgnoredControllers">
+            <summary>
+            Gets a collection of controller types that must be ignored by the route creation process.
+            </summary>
+        </member>
+        <member name="P:MvcCodeRouting.CodeRoutingSettings.RouteFormatter">
+            <summary>
+            Gets or sets a delegate for custom route formatting.
+            </summary>
+        </member>
+        <member name="P:MvcCodeRouting.CodeRoutingSettings.EnableEmbeddedViews">
+            <summary>
+            true to look for views embedded in assemblies.
+            </summary>
+        </member>
+        <member name="P:MvcCodeRouting.CodeRoutingSettings.UseImplicitIdToken">
+            <summary>
+            true to include an {id} route parameter for actions with a parameter named id.
+            </summary>
+        </member>
+        <member name="P:MvcCodeRouting.CodeRoutingSettings.RootOnly">
+            <summary>
+            true to create routes for the root controller only.
+            </summary>
+        </member>
+        <member name="P:MvcCodeRouting.CodeRoutingSettings.Configuration">
+            <summary>
+            Gets or sets an object that is associated to each created route as a data token
+            named 'Configuration'. Use to provide configuration settings to controllers.
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.CustomRouteAttribute">
+            <summary>
+            Represents an attribute that is used to customize the URL for the decorated
+            action method or controller class.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.CustomRouteAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvcCodeRouting.CustomRouteAttribute"/> class, 
+            using the provided URL pattern.
+            </summary>
+            <param name="url">
+            The URL pattern. Constraints can be specified using the <see cref="T:MvcCodeRouting.FromRouteAttribute"/>
+            on the action method parameters or controller class properties.
+            </param>
+        </member>
+        <member name="P:MvcCodeRouting.CustomRouteAttribute.Url">
+            <summary>
+            The URL pattern.
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.FromRouteAttribute">
+            <summary>
+            Represents an attribute that is used to mark action method parameters and 
+            controller properties, whose values must be bound using <see cref="T:System.Web.Mvc.RouteDataValueProvider"/>.
+            It also instructs the route creation process to add route parameters after the {action} token 
+            for each decorated action method parameter, and after the {controller} token for each 
+            decorated controller property.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.FromRouteAttribute.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvcCodeRouting.FromRouteAttribute"/> class.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.FromRouteAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvcCodeRouting.FromRouteAttribute"/> class 
+            using the specified name.
+            </summary>
+            <param name="tokenName">The name of the route parameter.</param>
+        </member>
+        <member name="M:MvcCodeRouting.FromRouteAttribute.GetBinder">
+            <summary>
+            Gets the model binder used to bind the decorated parameter or property.
+            </summary>
+            <returns>The model binder.</returns>
+        </member>
+        <member name="M:MvcCodeRouting.FromRouteAttribute.BindModel(System.Web.Mvc.ControllerContext,System.Web.Mvc.ModelBindingContext)">
+            <summary>
+            Binds the decorated parameter or property to a value by using the specified controller context and
+            binding context.
+            </summary>
+            <param name="controllerContext">The controller context.</param>
+            <param name="bindingContext">The binding context.</param>
+            <returns>The bound value.</returns>
+        </member>
+        <member name="P:MvcCodeRouting.FromRouteAttribute.Name">
+            <summary>
+            Gets or sets the route parameter name. The default name used is the parameter or property name.
+            </summary>
+        </member>
+        <member name="P:MvcCodeRouting.FromRouteAttribute.TokenName">
+            <summary>
+            Gets or sets the route parameter name. The default name used is the parameter or property name.
+            </summary>
+        </member>
+        <member name="P:MvcCodeRouting.FromRouteAttribute.Constraint">
+            <summary>
+            Gets or sets a regular expression that specify valid values for the decorated parameter or property.
+            </summary>
+        </member>
+        <member name="P:MvcCodeRouting.FromRouteAttribute.CatchAll">
+            <summary>
+            true if the parameter represents a catch-all token; otherwise, false.
+            This setting is ignored when used on controller properties.
+            </summary>
+        </member>
+        <member name="P:MvcCodeRouting.FromRouteAttribute.BinderType">
+            <summary>
+            Gets or sets the type of the binder.
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.RequireRouteParametersAttribute">
+            <summary>
+            An <see cref="T:System.Web.Mvc.ActionMethodSelectorAttribute"/> for overloaded action methods, used 
+            to help the ASP.NET MVC runtime disambiguate and choose the appropriate overload.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.RequireRouteParametersAttribute.IsValidForRequest(System.Web.Mvc.ControllerContext,System.Reflection.MethodInfo)">
+            <summary>
+            Determines whether the action method selection is valid for the specified
+            controller context.
+            </summary>
+            <param name="controllerContext">The controller context.</param>
+            <param name="methodInfo">Information about the action method.</param>
+            <returns>
+            true if the <see cref="P:System.Web.Mvc.ControllerContext.RouteData"/> has values for
+            all parameters decorated with <see cref="T:MvcCodeRouting.FromRouteAttribute"/>, and if all keys
+            in <see cref="P:System.Web.Mvc.ControllerContext.RouteData"/> match any of the decorated parameters,
+            excluding controller, action and other route parameters that do not map to action method parameters.
+            </returns>
+        </member>
+        <member name="T:MvcCodeRouting.RouteDebugHandler">
+            <summary>
+            Serves representations of the routes in <see cref="P:System.Web.Routing.RouteTable.Routes"/> 
+            for visualization and debugging purposes.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.RouteDebugHandler.ProcessRequest(System.Web.HttpContext)">
+            <summary>
+            Serves representations of the routes in <see cref="P:System.Web.Routing.RouteTable.Routes"/>.
+            </summary>
+            <param name="context">The HTTP context.</param>
+        </member>
+        <member name="P:MvcCodeRouting.RouteDebugHandler.IsReusable">
+            <summary>
+            Gets a value indicating whether another request can use the <see cref="T:System.Web.IHttpHandler"/>
+            instance.
+            </summary>
+        </member>
+        <member name="P:MvcCodeRouting.RouteDebugHandler.DefaultFormat">
+            <summary>
+            Gets or sets the default format that the handler should use.
+            Valid values are: "csharp", "vb".
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.RouteFormatterArgs">
+            <summary>
+            Provides data for custom route formatting.
+            </summary>
+            <seealso cref="P:MvcCodeRouting.CodeRoutingSettings.RouteFormatter"/>
+        </member>
+        <member name="P:MvcCodeRouting.RouteFormatterArgs.OriginalSegment">
+            <summary>
+            Gets the original segment.
+            </summary>
+        </member>
+        <member name="P:MvcCodeRouting.RouteFormatterArgs.SegmentType">
+            <summary>
+            Gets the segment type.
+            </summary>
+        </member>
+        <member name="P:MvcCodeRouting.RouteFormatterArgs.ControllerType">
+            <summary>
+            Gets the controller type.
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.RouteSegmentType">
+            <summary>
+            Represents the mapping source of a route segment.
+            </summary>
+        </member>
+        <member name="F:MvcCodeRouting.RouteSegmentType.Namespace">
+            <summary>
+            The route segment maps to a namespace segment.
+            </summary>
+        </member>
+        <member name="F:MvcCodeRouting.RouteSegmentType.Controller">
+            <summary>
+            The route segment maps to a controller name.
+            </summary>
+        </member>
+        <member name="F:MvcCodeRouting.RouteSegmentType.Action">
+            <summary>
+            The route segment maps to an action name.
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.Web.Mvc.CustomRouteAttribute">
+            <summary>
+            Represents an attribute that is used to customize the URL for the decorated
+            action method or controller class.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.Web.Mvc.CustomRouteAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvcCodeRouting.Web.Mvc.CustomRouteAttribute"/> class, 
+            using the provided URL pattern.
+            </summary>
+            <param name="url">
+            The URL pattern. Constraints can be specified using the <see cref="T:MvcCodeRouting.Web.Mvc.FromRouteAttribute"/>
+            on the action method parameters or controller class properties.
+            </param>
+        </member>
+        <member name="P:MvcCodeRouting.Web.Mvc.CustomRouteAttribute.Url">
+            <summary>
+            The URL pattern.
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.Web.Mvc.DefaultActionAttribute">
+            <summary>
+            Represents an attribute that is used to specify which action method should be treated as default action,
+            which means making the action segment of the URL optional.
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.Web.Mvc.FromRouteAttribute">
+            <summary>
+            Represents an attribute that is used to mark action method parameters and 
+            controller properties, whose values must be bound using <see cref="T:System.Web.Mvc.RouteDataValueProvider"/>.
+            It also instructs the route creation process to add route parameters after the {action} token 
+            for each decorated action method parameter, and after the {controller} token for each 
+            decorated controller property.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.Web.Mvc.FromRouteAttribute.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvcCodeRouting.Web.Mvc.FromRouteAttribute"/> class.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.Web.Mvc.FromRouteAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvcCodeRouting.Web.Mvc.FromRouteAttribute"/> class 
+            using the specified name.
+            </summary>
+            <param name="name">The name of the route parameter.</param>
+        </member>
+        <member name="P:MvcCodeRouting.Web.Mvc.FromRouteAttribute.Name">
+            <summary>
+            Gets or sets the route parameter name. The default name used is the parameter or property name.
+            </summary>
+        </member>
+        <member name="P:MvcCodeRouting.Web.Mvc.FromRouteAttribute.Constraint">
+            <summary>
+            Gets or sets a regular expression that specify valid values for the decorated parameter or property.
+            </summary>
+        </member>
+        <member name="P:MvcCodeRouting.Web.Mvc.FromRouteAttribute.CatchAll">
+            <summary>
+            true if the parameter represents a catch-all token; otherwise, false.
+            This setting is ignored when used on controller properties.
+            </summary>
+        </member>
+        <member name="P:MvcCodeRouting.Web.Mvc.FromRouteAttribute.BinderType">
+            <summary>
+            Gets or sets the type of the binder.
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.Web.Mvc.MvcExtensions">
+            <summary>
+            Extensions methods that provide utility functions for various ASP.NET MVC classes.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.Web.Mvc.MvcExtensions.BindRouteProperties(System.Web.Mvc.ControllerBase)">
+            <summary>
+            Binds controller properties decorated with <see cref="T:MvcCodeRouting.Web.Mvc.FromRouteAttribute"/>
+            using the current route values.
+            </summary>
+            <param name="controller">The controller to bind.</param>
+            <remarks>You can call this method from <see cref="M:System.Web.Mvc.ControllerBase.Initialize(System.Web.Routing.RequestContext)"/>.</remarks>
+        </member>
+        <member name="T:MvcCodeRouting.Web.Mvc.RequireRouteParametersAttribute">
+            <summary>
+            An <see cref="T:System.Web.Mvc.ActionMethodSelectorAttribute"/> for overloaded action methods, used 
+            to help the ASP.NET MVC runtime disambiguate and choose the appropriate overload.
+            </summary>
+        </member>
+    </members>
+</doc>
