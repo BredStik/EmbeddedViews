@@ -17,11 +17,16 @@ namespace MyPlugin
         public static void Start()
         {
             ConfigureRoutes();
+            AddCustomViewLocations();
+            ViewEngines.Engines.EnableCodeRouting();
+        }
 
+        private static void AddCustomViewLocations()
+        {
             var razorEngine = ViewEngines.Engines.First(x => x.GetType().Equals(typeof(FixedRazorViewEngine))) as FixedRazorViewEngine;
             razorEngine.AddViewLocationFormat(string.Format("~/Views/{0}/{{1}}/{{0}}.cshtml", MyPlugIn.Properties.Settings.Default.baseRoute));
+            razorEngine.AddPartialViewLocationFormat(string.Format("~/Views/{0}/{{1}}/{{0}}.cshtml", MyPlugIn.Properties.Settings.Default.baseRoute));
             razorEngine.AddPartialViewLocationFormat(string.Format("~/Views/{0}/Shared/{{0}}.cshtml", MyPlugIn.Properties.Settings.Default.baseRoute));
-            ViewEngines.Engines.EnableCodeRouting();
         }
 
         private static void ConfigureRoutes()

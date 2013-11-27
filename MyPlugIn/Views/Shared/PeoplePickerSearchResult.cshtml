@@ -1,0 +1,34 @@
+﻿@model IEnumerable<MyPlugIn.Models.PeoplePickerSearchResultViewModel>
+<table id="resultsTable">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Login</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td colspan="4">
+                    No records were found
+                </td>
+            </tr>
+        }
+        @foreach(var searchResult in Model){
+        <tr>
+            <td><a href="#" id="selectLink">Select</a></td>
+            <td>@searchResult.LastName</td>
+            <td>@searchResult.FirstName</td>
+            <td>@searchResult.Login</td>
+        </tr>
+        }
+    </tbody>
+</table>
+<script type="text/javascript">
+    $(function () {
+        $('a', $('#resultsTable')).click(function (e) { var cells = $('td', $(this).closest('tr')); var returnValue = { LastName: cells.eq(1).html(), FirstName: cells.eq(2).html(), Login: cells.eq(3).html() }; setUser(returnValue); return false; });
+    });
+</script>

@@ -1,0 +1,9 @@
+﻿@model IEnumerable<MyPlugIn.Models.RoleViewModel>
+<div id="roleRows">
+    @if(Model != null){    
+        foreach (var item in Model)
+        {
+            Html.RenderPartial("RoleRow", item);
+        }
+    }
+</div>

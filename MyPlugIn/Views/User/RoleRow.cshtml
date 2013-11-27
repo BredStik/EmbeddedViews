@@ -1,0 +1,15 @@
+﻿@model MyPlugIn.Models.RoleViewModel
+@using System.Collections
+
+@{ 
+    IList<SelectListItem> roles = new List<SelectListItem>();
+    roles.Add(new SelectListItem { Value = "1", Text = "Manager" });
+    roles.Add(new SelectListItem { Value = "2", Text = "User" });   
+} 
+<div id="roleRow">
+     @using (Html.BeginCollectionItem("Roles"))
+     {
+         @(Html.DropDownListFor(model => model.Id, roles))
+         <input type="button" value="Remove" class="k-button" onclick="$(this).closest('div').remove()" />
+     }
+</div>

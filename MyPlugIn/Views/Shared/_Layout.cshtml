@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <script type="text/javascript" src="@Url.Content("~/Resources/scripts/jquery-1.8.2.min.js", true)"></script> 
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Resources/css/site.css", true)" />
 </head>
 <body>
     embedded!
     @RenderBody()
 </body>
+@RenderSection("Scripts", false)
 </html>

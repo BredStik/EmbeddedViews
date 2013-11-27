@@ -1,0 +1,19 @@
+﻿@using MyPlugIn.Extensions
+<input type="text" id="searchText" /><input type="button" value="Search" id="searchButton" />
+<div id="peopleContainer"></div>
+
+<script type="text/javascript">
+    $(function () {
+        $('#searchText').bind('keypress', function(e) {
+            if (e.keyCode == 13) searchAD();
+        }); 
+        $('#searchButton').click(function () {
+            searchAD();
+        });
+    });
+    function searchAD()
+    {
+        $('#peopleContainer').html("<img src='@Url.Content("~/Resources/Images/loader.gif", true)' />");
+        $('#peopleContainer').load('@Url.Action("Search", "PeoplePicker")?search=' + $('#searchText').val());
+    }
+</script>
